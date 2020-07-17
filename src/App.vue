@@ -1,14 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/example">example</router-link>
+      <yiye-layout />
     </div>
     <router-view />
-    <yiye-layout />
   </div>
 </template>
 <script>
-import yiyeLayout from "@/layout";
+import yiyeLayout from "@/layout/index.jsx";
 export default {
   components: {
     yiyeLayout
