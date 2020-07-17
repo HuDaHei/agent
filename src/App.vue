@@ -1,13 +1,20 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/example">example</router-link>
     </div>
     <router-view />
+    <yiye-layout />
   </div>
 </template>
-
+<script>
+import yiyeLayout from "@/layout";
+export default {
+  components: {
+    yiyeLayout
+  }
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
