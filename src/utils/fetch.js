@@ -16,7 +16,7 @@ const operateStatus = status => {
     [
       200,
       () => {
-        confirm("请求成功");
+        // confirm("请求成功");
       }
     ]
   ]);
