@@ -1,3 +1,29 @@
+// 不同的状态处理
+const operateStatus = status => {
+  const statusMap = new Map([
+    [
+      401,
+      () => {
+        alert("请登陆");
+      }
+    ],
+    [
+      500,
+      () => {
+        alert("数据获取失败");
+      }
+    ],
+    [
+      200,
+      () => {
+        confirm("请求成功");
+      }
+    ]
+  ]);
+  const statusFun = statusMap.get(status) || (() => {});
+  statusFun();
+};
+
 // post 发送数据
 export async function postData(url = "", config = {}) {
   try {
@@ -13,6 +39,8 @@ export async function postData(url = "", config = {}) {
           ...headers
         }
       });
+      const { status } = fetchRes;
+      operateStatus(status);
       const result = await fetchRes.json();
       return result;
     } else {
