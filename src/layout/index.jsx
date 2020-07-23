@@ -9,20 +9,26 @@ const layoutMenu = {
     console.log(this.routes, "routes");
   },
   methods: {
-    createMenu(routes = []) {
-      const link = [];
-      routes.forEach(r => {
-        const { name, meta = {} } = r;
-        const { menuName } = meta;
-        const routerLink = <router-link to={name}>{menuName}</router-link>;
-        link.push(routerLink);
-      });
-      return link;
+    linkClick() {
+      console.log("kkk");
     }
   },
   render() {
-    const firstLevelMenu = this.createMenu(this.routes);
-    return <nav>{firstLevelMenu}</nav>;
+    // const firstLevelMenu = this.createMenu(this.routes);
+    return (
+      <section>
+        <section>
+          <nav>
+            {this.routes.map(r => {
+              const { name, meta = {} } = r;
+              const { menuName } = meta;
+              return <router-link to={name}>{menuName}</router-link>;
+            })}
+          </nav>
+        </section>
+        <router-view></router-view>
+      </section>
+    );
   }
 };
 

@@ -1,16 +1,12 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <yiye-layout />
-    </div>
     <router-view />
   </div>
 </template>
 <script>
-import yiyeLayout from "@/layout/index.jsx";
 export default {
   components: {
-    yiyeLayout
+    // yiyeLayout
   }
 };
 </script>
