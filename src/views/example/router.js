@@ -6,15 +6,17 @@ const example = [
     name: "example",
     component: Layout,
     meta: {
-      menuName: "菜单example"
+      menuName: "菜单example",
+      permissionCode: "has-example"
     },
     children: [
       {
         path: "",
-        name: "test",
+        name: "testInit",
         component: Index,
         meta: {
-          menuName: "我是二级"
+          menuName: "我是二级",
+          permissionCode: "has-testInit"
         }
       },
       {
@@ -22,7 +24,8 @@ const example = [
         name: "test",
         component: Index,
         meta: {
-          menuName: "耳机test"
+          menuName: "耳机test",
+          permissionCode: "freedom"
         }
       }
     ]
