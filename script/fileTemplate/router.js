@@ -5,10 +5,15 @@ const fsRepalceField = [
     name: "fsRepalceField",
     component: Layout,
     meta: {
-      menuName: "菜单example",
+      menuName: "fsRepalceMenuName",
       permissionCode: "has-example"
     },
-    children: []
+    children: [
+      {
+        path: "",
+        component: () => import(/* webpackChunkName: "fsRepalceField" */ "./index.vue")
+      }
+    ]
   }
 ];
 
