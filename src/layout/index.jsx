@@ -2,7 +2,12 @@ const layoutMenu = {
   name: "layoutNav",
   computed: {
     routes() {
-      return this.$router.options.routes;
+      const routes = this.$router.options.routes;
+      return (
+        routes.filter(r => {
+          return Reflect.has(r, "meta") && Reflect.has(r.meta, "menuName");
+        }) || []
+      );
     }
   },
   mounted() {
