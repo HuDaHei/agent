@@ -10,7 +10,7 @@ export default {
   name: "Login",
   methods: {
     handlerLogin() {
-      this.$router.push({ path: "/test" });
+      this.$router.push({ path: "/onemenu" });
     }
   }
 };

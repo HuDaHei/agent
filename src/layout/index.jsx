@@ -25,9 +25,10 @@ const layoutMenu = {
         <section>
           <nav>
             {this.routes.map(r => {
-              const { name, meta = {} } = r;
+              const { path, meta = {} } = r;
               const { menuName } = meta;
-              return <router-link to={name}>{menuName}</router-link>;
+              const to = { path };
+              return <router-link to={to}>{menuName}</router-link>;
             })}
           </nav>
         </section>
