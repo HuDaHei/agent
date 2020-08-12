@@ -1,10 +1,10 @@
-const twomenu = {
+const test = {
   namespaced: true,
   state: {
-    name: "twomenuModule"
+    name: "testModule"
   },
   mutations: {},
   actions: {},
   getters: {}
 };
-export default twomenu;
+export default test;

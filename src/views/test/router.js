@@ -1,24 +1,24 @@
 import Layout from "@/layout/index.jsx";
-const fsRepalceField = [
+const test = [
   {
-    path: "/fsRepalceField",
+    path: "/test",
     // name: "onemenu",
     component: Layout,
     meta: {
-      menuName: "fsRepalceMenuName",
+      menuName: "test",
       permissionCode: "has-example"
     },
     children: [
       {
         path: "",
         // eslint-disable-next-line prettier/prettier
-        component: () => import(/* webpackChunkName: "fsRepalceField" */ "@/layout/secondMenu.vue"),
+        component: () => import(/* webpackChunkName: "test" */ "@/layout/secondMenu.vue"),
         children: [
           {
             path: "",
             name: "secondeLevel",
             // eslint-disable-next-line prettier/prettier
-            component: () => import(/* webpackChunkName: "fsRepalceField" */ "./index.vue"),
+            component: () => import(/* webpackChunkName: "test" */ "./index.vue"),
             meta: {
               menuName: "二级菜单一号"
             }
@@ -29,4 +29,4 @@ const fsRepalceField = [
   }
 ];
 
-export default fsRepalceField;
+export default test;

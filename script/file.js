@@ -15,7 +15,7 @@ const ask = () => {
     {
       name: "MENUNAME",
       type: "input",
-      message: "菜单名称"
+      message: "一级菜单名称"
     }
   ];
   return inquirer.prompt(questions);
