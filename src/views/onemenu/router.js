@@ -2,7 +2,7 @@ import Layout from "@/layout/index.jsx";
 const onemenu = [
   {
     path: "/onemenu",
-    name: "onemenu",
+    // name: "onemenu",
     component: Layout,
     meta: {
       menuName: "一级菜单一号",

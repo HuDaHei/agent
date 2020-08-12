@@ -2,7 +2,7 @@ import Layout from "@/layout/index.jsx";
 const twomenu = [
   {
     path: "/twomenu",
-    name: "twomenu",
+    // name: "twomenu",
     component: Layout,
     meta: {
       menuName: "一级菜单二号",
