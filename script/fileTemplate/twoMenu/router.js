@@ -2,7 +2,7 @@ import Layout from "@/layout/index.jsx";
 const fsRepalceField = [
   {
     path: "/fsRepalceField",
-    // name: "onemenu",
+    // name: "onemenu", 一级路由不要设置name属性
     component: Layout,
     meta: {
       menuName: "fsRepalceMenuName",
@@ -16,11 +16,11 @@ const fsRepalceField = [
         children: [
           {
             path: "",
-            name: "secondeLevel",
+            name: "twomenupathname",
             // eslint-disable-next-line prettier/prettier
             component: () => import(/* webpackChunkName: "fsRepalceField" */ "./index.vue"),
             meta: {
-              menuName: "二级菜单一号"
+              menuName: "twomenupathcnname"
             }
           }
         ]

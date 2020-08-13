@@ -4,8 +4,8 @@ const figlet = require("figlet");
 // const shell = require("shelljs");
 const path = require("path");
 const fs = require("fs");
-const state = {};
-const ask = () => {
+let state = {};
+const ask = async () => {
   const questions = [
     {
       name: "DIRNAME",
@@ -16,9 +16,31 @@ const ask = () => {
       name: "MENUNAME",
       type: "input",
       message: "一级菜单名称"
+    },
+    {
+      name: "HASTWOMENU",
+      type: "confirm",
+      message: "是有有二级菜单"
     }
   ];
-  return inquirer.prompt(questions);
+  const twoquestions = [
+    {
+      name: "TWOMENUPATHNAME",
+      type: "input",
+      message: "二级菜单router的name名称"
+    },
+    {
+      name: "TWOMENUNAME",
+      type: "input",
+      message: "二级菜单名称"
+    }
+  ];
+  const { HASTWOMENU, ...rest } = await inquirer.prompt(questions);
+  let res = {};
+  if (HASTWOMENU) {
+    res = await inquirer.prompt(twoquestions);
+  }
+  return { ...rest, ...res, HASTWOMENU };
 };
 
 const replaceFile = (filePath = "", mkFilePath = "") => {
@@ -29,6 +51,8 @@ const replaceFile = (filePath = "", mkFilePath = "") => {
       //fsRepalceFieldMenuName
       fileStr = fileStr.replace(/fsRepalceField/g, state.DIRNAME);
       fileStr = fileStr.replace(/fsRepalceMenuName/g, state.MENUNAME);
+      fileStr = fileStr.replace(/twomenupathname/g, state.TWOMENUPATHNAME);
+      fileStr = fileStr.replace(/twomenupathcnname/g, state.TWOMENUNAME);
       fs.writeFile(mkFilePath, fileStr, err => {
         if (err) throw { err, type: "writeFile" };
       });
@@ -36,11 +60,16 @@ const replaceFile = (filePath = "", mkFilePath = "") => {
   }
 };
 const createFile = mkFilePath => {
-  fs.readdir(path.resolve(__dirname, "./fileTemplate"), (err, files) => {
+  let templatePath = "oneMenu";
+  if (state.HASTWOMENU) {
+    templatePath = "twoMenu";
+  }
+  const filePath = `./fileTemplate/${templatePath}`;
+  fs.readdir(path.resolve(__dirname, filePath), (err, files) => {
     if (err) throw err;
     if (files.length) {
       files.forEach(f => {
-        const templateFilePath = path.resolve(__dirname, "./fileTemplate/" + f);
+        const templateFilePath = path.resolve(__dirname, filePath + "/" + f);
         fs.stat(templateFilePath, (err, status) => {
           if (err) throw err;
           if (status.isFile()) {
@@ -53,6 +82,7 @@ const createFile = mkFilePath => {
   });
 };
 const createDir = async () => {
+  // 创建项目文件目录
   const mkdirPath = path.resolve(process.cwd(), "./src/views/" + state.DIRNAME);
   fs.mkdir(mkdirPath, err => {
     if (err) throw { err, type: "mkdir" };
@@ -71,10 +101,7 @@ const init = async () => {
     )
   );
   //
-  const answers = await ask();
-  const { DIRNAME, MENUNAME } = answers;
-  Reflect.set(state, "DIRNAME", DIRNAME);
-  Reflect.set(state, "MENUNAME", MENUNAME);
+  state = await ask();
   //
   createDir();
 };
