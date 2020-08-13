@@ -45,6 +45,7 @@
 <script>
 import { uuid } from "@/utils/uuid.js";
 import { setCookie } from "@/utils/cookie.js";
+import { localStore } from "@/utils/localStore.js";
 export default {
   name: "Login",
   data() {
@@ -98,6 +99,9 @@ export default {
       };
     }
   },
+  mounted() {
+    this.createLocalStore("kkkweioe");
+  },
   methods: {
     handlerLogin(ref = "") {
       this.$refs[ref].validate(async valid => {
@@ -109,7 +113,8 @@ export default {
           const { token = "" } = res || {};
           if (token.length) {
             setCookie("jwt-token", token);
-            this.$router.push({ path: "/onemenu" });
+            this.createLocalStore(this.login.loginKey);
+            this.$router.push({ path: "/workbench" });
           } else {
             this.handlerCaptcha();
           }
@@ -120,6 +125,11 @@ export default {
     },
     handlerCaptcha() {
       this.login.captchaKey = uuid();
+    },
+    createLocalStore(unique = "") {
+      // 创建本地存储的是实例 后续所有数据通过localStore方式存储;
+      // eslint-disable-next-line no-undef
+      window.$localStore = localStore(unique);
     }
   }
 };

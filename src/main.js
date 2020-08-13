@@ -11,7 +11,6 @@ Vue.use(Input);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Button);
-// Vue.use(Message);
 //
 Vue.config.productionTip = false;
 Vue.prototype.$_post = post;
