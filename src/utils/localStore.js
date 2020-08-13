@@ -19,7 +19,7 @@ export function localStore(unique = "") {
           return new Promise(resolve => {
             const fun = Reflect.get(target, propkey);
             fun(key).then(value => {
-                console.log(value, 'value')
+              console.log(value, "value");
               resolve(decrypt(value));
             });
           });
