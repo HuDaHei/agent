@@ -28,8 +28,12 @@ export function localStore(unique = "") {
             const fun = Reflect.get(target, propkey);
             const newfun = fun.bind(target);
             newfun(key).then(value => {
-              const data = JSON.parse(decrypt(value));
-              resolve(data);
+              if (value) {
+                const data = JSON.parse(decrypt(value));
+                resolve(data);
+              } else {
+                resolve({});
+              }
             });
           });
         };

@@ -4,9 +4,30 @@
   </div>
 </template>
 <script>
+import { getUserInfo } from "@/api/index.js";
+import { mapActions } from "vuex";
 export default {
-  components: {
-    // yiyeLayout
+  async mounted() {
+    // 当前页不是登录页 就获取用户数据
+    if (this.$route.name !== "login") {
+      this.getUserInfo();
+    }
+  },
+  methods: {
+    ...mapActions(["updateUserInfo"]),
+    async getUserInfo() {
+      const userInfo = await getUserInfo();
+      // module
+      let { permissions } = userInfo;
+      permissions = permissions.map(p => {
+        const { module } = p;
+        return module;
+      });
+      this.updateUserInfo(Object.assign({}, userInfo, { permissions }));
+    },
+    logout() {
+      this.$router.push("/");
+    }
   }
 };
 </script>

@@ -1,5 +1,4 @@
 export function setCookie(key = "test", value = "test") {
-  debugger;
   document.cookie = `${key}=${value}`;
 }
 export function getCookie(key = "test") {

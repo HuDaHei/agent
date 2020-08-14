@@ -44,10 +44,8 @@
 
 <script>
 import { uuid } from "@/utils/uuid.js";
-import { setCookie, removeCookie} from "@/utils/cookie.js";
+import { setCookie, removeCookie } from "@/utils/cookie.js";
 import { localStore } from "@/utils/localStore.js";
-import { getUserInfo } from "@/api/index.js";
-import { mapActions } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -106,7 +104,6 @@ export default {
     removeCookie("jwt-token");
   },
   methods: {
-    ...mapActions(["updateUserInfo"]),
     handlerLogin(ref = "") {
       this.$refs[ref].validate(async valid => {
         if (valid) {
@@ -120,14 +117,7 @@ export default {
             // 创建本地存储的实例
             this.createLocalStore(this.login.loginKey);
             window.sessionStorage.setItem("unique", this.login.loginKey);
-            const userInfo = await getUserInfo();
-            // module
-            let { permissions } = userInfo;
-            permissions = permissions.map(p => {
-              const { module } = p;
-              return module;
-            });
-            this.updateUserInfo(Object.assign({}, userInfo, { permissions }));
+            // const userInfo = await getUserInfo();
             this.$router.push({ path: "/workbench" });
           } else {
             this.handlerCaptcha();
