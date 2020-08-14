@@ -33,3 +33,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 网络请求使用fetch
 
 ### 路由的权限在路由中的meta中permissionCode中控制好，code由后台给出， 不需要鉴权的路由设置permissionCode为freedom
+
+### 本地数据加密 以及支持vuex持久化(同样支持加密)
