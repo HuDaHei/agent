@@ -9,7 +9,10 @@ module.exports = {
       const localForage = isProd
         ? "https://cdn.bootcdn.net/ajax/libs/localforage/1.9.0/localforage.min.js"
         : "https://cdn.bootcdn.net/ajax/libs/localforage/1.9.0/localforage.js";
-      return [{ ...config, normalize, localForage }];
+      const base64 = isProd
+        ? "https://cdn.jsdelivr.net/npm/js-base64@3.4.5/base64.min.js"
+        : "https://cdn.jsdelivr.net/npm/js-base64@3.4.5/base64.min.js";
+      return [{ ...config, normalize, localForage, base64 }];
     });
   }
 };

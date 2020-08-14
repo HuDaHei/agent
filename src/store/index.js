@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import initState from "./initVues";
+import { createVuexPersistence } from "./plugins";
+const persistenceMutatonsType = ["UPDATE_USER_INFO"];
+const vuexPersistence = createVuexPersistence(persistenceMutatonsType);
 Vue.use(Vuex);
 const modules = {};
 const requireVuexModule = require.context(
@@ -15,8 +18,7 @@ requireVuexModule.keys().forEach(filename => {
   Reflect.set(modules, moduleName, module.default);
 });
 export default new Vuex.Store({
-  state: {}, // init state
-  mutations: {},
-  actions: {},
-  modules
+  ...initState,
+  modules,
+  plugins: [vuexPersistence]
 });

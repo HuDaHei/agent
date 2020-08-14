@@ -46,6 +46,8 @@
 import { uuid } from "@/utils/uuid.js";
 import { setCookie } from "@/utils/cookie.js";
 import { localStore } from "@/utils/localStore.js";
+import { getUserInfo } from "@/api/index.js";
+import { mapActions } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -99,10 +101,11 @@ export default {
       };
     }
   },
-  mounted() {
-    this.createLocalStore("kkkweioe");
+  created() {
+    window.sessionStorage.clear();
   },
   methods: {
+    ...mapActions(["updateUserInfo"]),
     handlerLogin(ref = "") {
       this.$refs[ref].validate(async valid => {
         if (valid) {
@@ -113,7 +116,11 @@ export default {
           const { token = "" } = res || {};
           if (token.length) {
             setCookie("jwt-token", token);
+            // 创建本地存储的实例
             this.createLocalStore(this.login.loginKey);
+            window.sessionStorage.setItem("unique", this.login.loginKey);
+            const userInfo = await getUserInfo();
+            this.updateUserInfo(userInfo);
             this.$router.push({ path: "/workbench" });
           } else {
             this.handlerCaptcha();

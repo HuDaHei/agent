@@ -34,7 +34,7 @@ const operateStatus = (status, msg = "API未知错误") => {
 export async function post(url = "", config = {}) {
   try {
     if (url.length) {
-      let { data, headers = {} } = config;
+      let { data = {}, headers = {} } = config;
       headers = {
         "Content-Type": "application/json",
         Authorization: getCookie("jwt-token"),
@@ -49,6 +49,7 @@ export async function post(url = "", config = {}) {
         headers
       });
       const { status } = fetchRes;
+      console.log(fetchRes, "fetchRes");
       const result = await fetchRes.json();
       const { message = "" } = result;
       operateStatus(status, message);

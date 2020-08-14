@@ -10,9 +10,6 @@ const layoutMenu = {
       );
     }
   },
-  mounted() {
-    console.log(this.routes, "routes");
-  },
   methods: {
     linkClick() {
       console.log("kkk");

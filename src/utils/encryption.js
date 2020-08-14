@@ -6,10 +6,12 @@ export function encryption(data = {}) {
   const dataStr = typeof data == 'object' ? JSON.stringify(data): data;
   const start = randomWord(24);
   const end = randomWord(15);
-  return `${start}${window.btoa(dataStr)}${end}`;
+  // eslint-disable-next-line no-undef
+  return `${start}${Base64.encode(dataStr)}${end}`;
 }
 //解密
 export function decrypt(dataStr = "") {
   const decrypt = dataStr.slice(24, -15);
-  return window.atob(decrypt);
+  // eslint-disable-next-line no-undef
+  return Base64.decode(decrypt);
 }
