@@ -44,7 +44,7 @@
 
 <script>
 import { uuid } from "@/utils/uuid.js";
-import { setCookie } from "@/utils/cookie.js";
+import { setCookie, removeCookie} from "@/utils/cookie.js";
 import { localStore } from "@/utils/localStore.js";
 import { getUserInfo } from "@/api/index.js";
 import { mapActions } from "vuex";
@@ -103,6 +103,7 @@ export default {
   },
   created() {
     window.sessionStorage.clear();
+    removeCookie("jwt-token");
   },
   methods: {
     ...mapActions(["updateUserInfo"]),
@@ -120,7 +121,13 @@ export default {
             this.createLocalStore(this.login.loginKey);
             window.sessionStorage.setItem("unique", this.login.loginKey);
             const userInfo = await getUserInfo();
-            this.updateUserInfo(userInfo);
+            // module
+            let { permissions } = userInfo;
+            permissions = permissions.map(p => {
+              const { module } = p;
+              return module;
+            });
+            this.updateUserInfo(Object.assign({}, userInfo, { permissions }));
             this.$router.push({ path: "/workbench" });
           } else {
             this.handlerCaptcha();

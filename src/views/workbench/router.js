@@ -6,7 +6,7 @@ const workbench = [
     component: Layout,
     meta: {
       menuName: "工作台",
-      permissionCode: "has-example"
+      permissionCode: "workbench-module"
     },
     children: [
       {
