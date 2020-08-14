@@ -1,3 +1,5 @@
+import { getUserInfo } from "@/api/index.js";
+
 // 全局通用的vuex数据存储
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO"; // 更新用户信息
 const state = {
@@ -9,8 +11,15 @@ const mutations = {
   }
 };
 const actions = {
-  updateUserInfo({ commit }, payload) {
-    commit(UPDATE_USER_INFO, payload);
+  async updateUserInfo({ commit }) {
+    const userInfo = await getUserInfo();
+    // module
+    let { permissions } = userInfo;
+    permissions = permissions.map(p => {
+      const { module } = p;
+      return module;
+    });
+    commit(UPDATE_USER_INFO, Object.assign({}, userInfo, { permissions }));
   }
 };
 const getters = {

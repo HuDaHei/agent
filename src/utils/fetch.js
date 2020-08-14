@@ -49,7 +49,6 @@ export async function post(url = "", config = {}) {
         headers
       });
       const { status } = fetchRes;
-      console.log(fetchRes, "fetchRes");
       const result = await fetchRes.json();
       const { message = "" } = result;
       operateStatus(status, message);

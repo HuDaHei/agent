@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import initState from "./initVues";
 import { createVuexPersistence } from "./plugins";
-const persistenceMutatonsType = ["UPDATE_USER_INFO"];
+const persistenceMutatonsType = [];
 const vuexPersistence = createVuexPersistence(persistenceMutatonsType);
 Vue.use(Vuex);
 const modules = {};
