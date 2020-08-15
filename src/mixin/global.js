@@ -1,8 +1,7 @@
 export const permission = {
   methods: {
-    $_hasPermisson(code) {
+    $_hasPermisson(code = "randomx") {
       const permissons = this.$store.getters.getUserInfo.permissions || [];
-      console.log(permissons);
       return permissons.find(g => g === code);
     }
   }
