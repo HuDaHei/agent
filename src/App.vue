@@ -1,15 +1,23 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view v-if="loading" />
   </div>
 </template>
 <script>
 import { mapActions } from "vuex";
 export default {
+  data() {
+    return {
+      loading: false
+    };
+  },
   async mounted() {
     // 当前页不是登录页 就获取用户数据
     if (this.$route.name !== "login") {
-      this.updateUserInfo();
+      await this.updateUserInfo();
+      this.loading = true;
+    } else {
+      this.loading = true;
     }
   },
   methods: {
