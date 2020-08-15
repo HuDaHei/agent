@@ -9,7 +9,7 @@ export function createVuexPersistence(types = []) {
   return store => {
     types.forEach(async t => {
       const payload = await getLocalvuexState(t);
-      store.commit(t, payload);
+      t && store.commit(t, payload);
     });
     store.subscribe(mutation => {
       const { type, payload } = mutation;
