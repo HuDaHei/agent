@@ -1,22 +1,19 @@
 import Vue from "vue";
 import App from "./App.vue";
-import "./registerServiceWorker";
-import "@/utils/initLocalStore.js";
 import router from "./router";
 import store from "./store";
-import { post } from "@/utils/fetch.js";
-import { Input, Form, FormItem, Button } from "element-ui";
-import { permission } from "@/mixin/global.js";
+import "./registerServiceWorker";
+import "@/utils/initLocalStore.js";
 import "element-ui/lib/theme-chalk/index.css";
-Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };
-Vue.use(Input);
-Vue.use(Form);
-Vue.use(FormItem);
-Vue.use(Button);
-//
+import { loadElementUI } from "@/utils/loadElementUI.js";
+import { post } from "@/utils/fetch.js";
+import { permission } from "@/mixin/global.js";
+
 Vue.config.productionTip = false;
 Vue.prototype.$_post = post;
 Vue.mixin(permission);
+// 懒加载elementui
+loadElementUI(Vue);
 new Vue({
   router,
   store,
