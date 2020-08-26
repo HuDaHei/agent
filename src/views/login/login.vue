@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { uuid } from "@/utils/uuid.js";
+import { uuid, createSingleMd5 } from "@/utils/uuid.js";
 import { setCookie, removeCookie } from "@/utils/cookie.js";
 import { localStore } from "@/utils/localStore.js";
 import { mapActions } from "vuex";
@@ -119,6 +119,8 @@ export default {
             // 创建本地存储的实例
             this.createLocalStore(this.login.loginKey);
             window.sessionStorage.setItem("unique", this.login.loginKey);
+            const unikey = createSingleMd5(this.login.loginKey);
+            console.log(unikey, "unikey");
             await this.updateUserInfo();
             this.$router.push({ path: "/workbench" });
           } else {

@@ -12,7 +12,10 @@ module.exports = {
       const base64 = isProd
         ? "https://cdn.jsdelivr.net/npm/js-base64@3.4.5/base64.min.js"
         : "https://cdn.jsdelivr.net/npm/js-base64@3.4.5/base64.min.js";
-      return [{ ...config, normalize, localForage, base64 }];
+      const md5 = isProd
+        ? "https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"
+        : "https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.0/spark-md5.js";
+      return [{ ...config, normalize, localForage, base64, md5 }];
     });
   }
 };
