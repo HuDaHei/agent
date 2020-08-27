@@ -1,9 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import initState from "./initVues";
-import { createVuexPersistence } from "./plugins";
-const persistenceMutatonsType = [];
-const vuexPersistence = createVuexPersistence(persistenceMutatonsType);
 Vue.use(Vuex);
 const modules = {};
 const requireVuexModule = require.context(
@@ -19,6 +16,5 @@ requireVuexModule.keys().forEach(filename => {
 });
 export default new Vuex.Store({
   ...initState,
-  modules,
-  plugins: [vuexPersistence]
+  modules
 });

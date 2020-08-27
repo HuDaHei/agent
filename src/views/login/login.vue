@@ -44,7 +44,7 @@
 
 <script>
 import { uuid } from "@/utils/uuid.js";
-import { setCookie, removeCookie } from "@/utils/cookie.js";
+import { setCookie } from "@/utils/cookie.js";
 import { localStore } from "@/utils/localStore.js";
 import { mapActions } from "vuex";
 export default {
@@ -100,10 +100,6 @@ export default {
       };
     }
   },
-  beforeCreate() {
-    window.sessionStorage.clear();
-    removeCookie("jwt-token");
-  },
   methods: {
     ...mapActions(["updateUserInfo"]),
     handlerLogin(ref = "") {
@@ -133,9 +129,8 @@ export default {
       this.login.captchaKey = uuid();
     },
     createLocalStore(unique = "") {
-      // 创建本地存储的是实例 后续所有数据通过localStore方式存储;
-      // eslint-disable-next-line no-undef
-      window.$localStore = localStore(unique);
+      // 创建本地存储的是实例 后续所有数据通过$localStore方式存储;
+      localStore(unique);
     }
   }
 };
