@@ -28,7 +28,7 @@ const layoutMenu = {
           </h4>
           <section>
             <nav>
-              <el-menu mode="horizontal">
+              <el-menu mode="horizontal" router={true}>
                 {this.routes.map(r => {
                   const { path, meta = {} } = r;
                   const { menuName } = meta;
