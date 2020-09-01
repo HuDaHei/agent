@@ -3,7 +3,6 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
-import "@/utils/initLocalStore.js";
 import "element-ui/lib/theme-chalk/index.css";
 import { loadElementUI } from "@/utils/loadElementUI.js";
 import { post } from "@/utils/fetch.js";
