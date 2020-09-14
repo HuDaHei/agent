@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <template v-for="r in second">
-      <router-link :key="r.path" :to="{ name: r.name }" append>{{
-        r.meta.menuName
-      }}</router-link>
-    </template>
-    <router-view></router-view>
+  <div class="second_nav_container">
+    <div class="second_nav_menu">
+      <template v-for="r in second">
+        <router-link :key="r.path" :to="{ name: r.name }" append>{{
+          r.meta.menuName
+        }}</router-link>
+      </template>
+    </div>
+    <div class="second_nav_content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -39,4 +43,18 @@ export default {
   }
 };
 </script>
-<style></style>
+<style lang="scss" scope>
+$bg_color: #edf0f7;
+.second_nav {
+  &_container {
+    font-size: 12px;
+    background-color: $bg_color;
+  }
+  &_menu {
+    background-color: #fafafa;
+  }
+  &_content {
+    margin-top: 10px;
+  }
+}
+</style>

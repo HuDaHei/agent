@@ -28,7 +28,7 @@ const assetsData = [
             path: "manage",
             name: "manage",
             // eslint-disable-next-line prettier/prettier
-            component: () => import(/* webpackChunkName: "assetsData" */ "@/views/assetsData/manage/index.vue"),
+            component: () => import(/* webpackChunkName: "manage" */ "@/views/assetsData/manage/index.vue"),
             meta: {
               menuName: "管理"
             }

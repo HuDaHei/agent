@@ -1,8 +1,10 @@
 import "./index.scss";
 import navLogo from "@/assets/navLogo.svg";
+import { mapGetters } from "vuex";
 const layoutMenu = {
   name: "layoutNav",
   computed: {
+    ...mapGetters(["getUserName"]),
     routes() {
       const routes = this.$router.options.routes;
       return (
@@ -26,7 +28,7 @@ const layoutMenu = {
             <img src={navLogo} width="84" height="42" />
             <span class="sign_title">代理商服务系统</span>
           </h4>
-          <section>
+          <section class="first_nav_position">
             <nav>
               <el-menu mode="horizontal" router={true}>
                 {this.routes.map(r => {
@@ -37,6 +39,19 @@ const layoutMenu = {
               </el-menu>
             </nav>
           </section>
+          <div class="first_nav_info">
+            {/* 退出 */}
+            <el-dropdown trigger="click">
+              <span>
+                <span>{this.getUserName}</span>
+                <i class="el-icon-caret-bottom"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item>退出系统</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
         </section>
         <section>
           <router-view></router-view>

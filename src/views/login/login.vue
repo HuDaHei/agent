@@ -155,6 +155,7 @@ export default {
       font-size: 30px;
       color: #333;
       white-space: nowrap;
+      text-align: center;
     }
   }
   &_form {
