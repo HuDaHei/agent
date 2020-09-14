@@ -1,5 +1,6 @@
 <template>
-  <div> workbench'
+  <div>
+    workbench'
     <div v-if="$_hasPermisson('we')">werwer</div>
   </div>
 </template>
