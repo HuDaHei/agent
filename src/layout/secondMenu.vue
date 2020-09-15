@@ -2,9 +2,14 @@
   <div class="second_nav_container">
     <div class="second_nav_menu">
       <template v-for="r in second">
-        <router-link :key="r.path" :to="{ name: r.name }" append>{{
-          r.meta.menuName
-        }}</router-link>
+        <router-link 
+        :key="r.path" 
+        :to="{ name: r.name }"
+        active-class="active-class"
+        class="second_nav_sub"
+        append>
+        <i :class="r.meta.icon"></i>
+        {{r.meta.menuName}}</router-link>
       </template>
     </div>
     <div class="second_nav_content">
@@ -22,8 +27,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route, "$route");
-    console.log(this.$router, "$router");
     this.second = Object.freeze(this.getSecondDLevel());
   },
   methods: {
@@ -45,16 +48,27 @@ export default {
 </script>
 <style lang="scss" scope>
 $bg_color: #edf0f7;
+$height:32px;
+$activeColor: #51C75B;
 .second_nav {
   &_container {
     font-size: 12px;
     background-color: $bg_color;
+    text-align: center;
   }
   &_menu {
+    height: $height;
+    line-height: $height;
     background-color: #fafafa;
+  }
+  &_sub{
+    margin-left: 15px;
   }
   &_content {
     margin-top: 10px;
   }
 }
+  .active-class{
+    color: $activeColor;
+  }
 </style>

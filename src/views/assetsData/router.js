@@ -21,7 +21,8 @@ const assetsData = [
             // eslint-disable-next-line prettier/prettier
             component: () => import(/* webpackChunkName: "assetsData" */ "@/views/assetsData/survery/index.vue"),
             meta: {
-              menuName: "概况"
+              menuName: "概况",
+              icon:'iconfont iconzichangaikuang'
             }
           },
           {
@@ -30,7 +31,8 @@ const assetsData = [
             // eslint-disable-next-line prettier/prettier
             component: () => import(/* webpackChunkName: "manage" */ "@/views/assetsData/manage/index.vue"),
             meta: {
-              menuName: "管理"
+              menuName: "管理",
+              icon:'iconfont iconzichanguanli'
             }
           }
         ]

@@ -23,10 +23,8 @@ $sign_color: #b9b9b9;
   }
   &_position{
     flex: 1;
-    & > nav {
-      display: inline-block;
-    }
-    & /deep/ .el-menu--horizontal>.el-menu-item{
+    display: inline-flex;
+    .el-menu--horizontal>.el-menu-item{
       height: 43px;
       line-height: 43px;
     }
@@ -36,7 +34,7 @@ $sign_color: #b9b9b9;
     justify-content: center;
     align-items: center;
     padding-right: 15px;
-    & /deep/ .el-dropdown-selfdefine{
+    .el-dropdown-selfdefine{
       font-size: 12px;
     }
   }

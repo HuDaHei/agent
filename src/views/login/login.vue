@@ -135,7 +135,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .login {
   display: flex;
   justify-content: center;
@@ -163,7 +163,7 @@ export default {
     margin: auto;
   }
   &_safe {
-    /deep/ .el-form-item__content {
+    .el-form-item__content {
       display: flex;
       img {
         width: 100px;

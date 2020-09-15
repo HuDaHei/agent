@@ -23,6 +23,9 @@ const actions = {
   }
 };
 const getters = {
+  getUserInfo: state => {
+    return state.userInfo;
+  },
   getUserName: state => {
     return state.userInfo.username;
   }
