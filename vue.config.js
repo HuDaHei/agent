@@ -1,4 +1,5 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 module.exports = {
   chainWebpack: config => {
     config.plugin("html").tap(args => {
@@ -15,6 +16,6 @@ module.exports = {
         : "https://cdn.jsdelivr.net/npm/js-base64@3.4.5/base64.min.js";
       return [{ ...config, normalize, localForage, base64 }];
     });
-    config.plugin('analyzer').use(BundleAnalyzerPlugin);
+    config.plugin("analyzer").use(BundleAnalyzerPlugin);
   }
 };

@@ -1,13 +1,13 @@
 import "./index.scss";
 import navLogo from "@/assets/navLogo.svg";
 import { mapGetters } from "vuex";
-import { debounce } from 'lodash'
+import { debounce } from "lodash";
 const layoutMenu = {
   name: "layoutNav",
-  data(){
+  data() {
     return {
-      defaultActive:""
-    }
+      defaultActive: ""
+    };
   },
   computed: {
     ...mapGetters(["getUserName"]),
@@ -18,20 +18,20 @@ const layoutMenu = {
           return Reflect.has(r, "meta") && Reflect.has(r.meta, "menuName");
         }) || []
       );
-    },
+    }
   },
-  created(){
+  created() {
     const { matched = [] } = this.$route;
-    const [ first ={} ] = matched;
-    const { path:defaultActive } = first
+    const [first = {}] = matched;
+    const { path: defaultActive } = first;
     this.defaultActive = defaultActive; // 浏览器刷新后确定当前的默认激活菜单
   },
   methods: {
     handlerActiveRouter() {
-       const editDefaultActive = (data)=>{
-          this.defaultActive = data
-       }
-       return debounce(editDefaultActive, 500);
+      const editDefaultActive = data => {
+        this.defaultActive = data;
+      };
+      return debounce(editDefaultActive, 500);
     }
   },
   render() {
@@ -44,7 +44,12 @@ const layoutMenu = {
           </h4>
           <section class="first_nav_position">
             <nav>
-              <el-menu mode="horizontal" router={true} default-active={this.defaultActive}  onSelect={ this.handlerActiveRouter() }>
+              <el-menu
+                mode="horizontal"
+                router={true}
+                default-active={this.defaultActive}
+                onSelect={this.handlerActiveRouter()}
+              >
                 {this.routes.map(r => {
                   const { path, meta = {} } = r;
                   const { menuName } = meta;
@@ -67,7 +72,7 @@ const layoutMenu = {
             </el-dropdown>
           </div>
         </section>
-        <section>
+        <section class="first_nav_content">
           <router-view></router-view>
         </section>
       </section>
