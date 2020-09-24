@@ -15,6 +15,7 @@ import { loadVxeTable } from "@/utils/loadVxeTable.js";
 Vue.config.productionTip = false;
 Vue.prototype.$_post = post;
 Vue.mixin(permission);
+Vue.use(VueI18n)
 const messages = {
   zh_CN: {
     ...zhCN
@@ -23,15 +24,15 @@ const messages = {
     ...enUS
   }
 };
-// const i18n = new VueI18n({
-//   locale: 'zh_CN',
-//   messages,
-// });
+const i18n = new VueI18n({
+  locale: 'zh_CN',
+  messages,
+});
 loadElementUI(Vue); // 按需加载elementui组件
 loadVxeTable(Vue, i18n); // 按需加载表格组件
 new Vue({
   router,
   store,
-  // i18n,
+  i18n,
   render: h => h(App)
 }).$mount("#app");
