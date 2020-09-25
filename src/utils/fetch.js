@@ -3,20 +3,23 @@ import { Message } from "element-ui";
 import { contentTypeFunData } from "@/utils/formdata.js";
 
 // 不同的状态处理
-const operateStatus = (status, msg = "API未知错误") => {
+const operateStatus = (status, message = "API未知错误") => {
   const statusMap = new Map([
     [
       401,
       () => {
-        Message.error(msg);
-        throw new Error(msg);
+        Message({
+          type: "error",
+          message: message || "暂无权限"
+        });
+        throw new Error(message);
       }
     ],
     [
       500,
       () => {
-        Message.error(msg);
-        throw new Error(msg);
+        Message.error(message);
+        throw new Error(message);
       }
     ],
     [
@@ -37,7 +40,7 @@ export async function post(url = "", config = {}) {
       let { data = {}, headers = {}, method = "POST" } = config;
       headers = {
         "Content-Type": "application/json",
-        Authorization: getCookie("jwt-token"),
+        Authorization: getCookie("yiye-token"),
         ...headers
       };
       const contentType = Reflect.get(headers, "Content-Type");
@@ -68,7 +71,7 @@ export async function get(url, config = {}) {
       let { data = {}, headers = {}, method = "GET" } = config;
       headers = {
         "Content-Type": "application/json",
-        Authorization: getCookie("jwt-token"),
+        Authorization: getCookie("yiye-token"),
         ...headers
       };
       const contentType = Reflect.get(headers, "Content-Type");
