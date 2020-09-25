@@ -50,12 +50,7 @@
         :current-page="currentPage"
         :page-size="pageSize"
         :total="totalResult"
-        :page-sizes="[
-          10,
-          20,
-          100,
-          { label: '大量数据', value: 1000 },
-        ]"
+        :page-sizes="[10, 20, 100, { label: '大量数据', value: 1000 }]"
         :layouts="[
           'PrevPage',
           'JumpNumber',
@@ -91,10 +86,10 @@ export default {
   methods: {
     handlePageChange(v) {
       console.log(v, "kkk");
-      const { currentPage,pageSize} = v;
+      const { currentPage, pageSize } = v;
       this.currentPage = currentPage;
       this.pageSize = pageSize;
-      this.init()
+      this.init();
     },
     async init() {
       const data = {
@@ -119,9 +114,9 @@ export default {
       this.totalResult = totalResult;
     },
     handlerAccount(row) {
-      console.log(row, 'row');
+      console.log(row, "row");
       this.$openIframe(row);
-    },
+    }
   }
 };
 </script>
