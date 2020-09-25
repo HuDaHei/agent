@@ -120,6 +120,7 @@ export default {
     },
     handlerAccount(row) {
       console.log(row, 'row');
+      this.$openIframe(row);
     },
   }
 };

@@ -40,7 +40,7 @@ export async function post(url = "", config = {}) {
       let { data = {}, headers = {}, method = "POST" } = config;
       headers = {
         "Content-Type": "application/json",
-        Authorization: getCookie("yiye-token"),
+        Authorization: getCookie("jwt-token"),
         ...headers
       };
       const contentType = Reflect.get(headers, "Content-Type");
@@ -71,7 +71,7 @@ export async function get(url, config = {}) {
       let { data = {}, headers = {}, method = "GET" } = config;
       headers = {
         "Content-Type": "application/json",
-        Authorization: getCookie("yiye-token"),
+        Authorization: getCookie("jwt-token"),
         ...headers
       };
       const contentType = Reflect.get(headers, "Content-Type");
