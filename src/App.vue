@@ -30,8 +30,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  min-width: 1024px;
 }
 
 #nav {
@@ -45,5 +45,8 @@ export default {
       color: #42b983;
     }
   }
+}
+.el-dropdown-menu--small .el-dropdown-menu__item {
+  font-size: 12px !important;
 }
 </style>

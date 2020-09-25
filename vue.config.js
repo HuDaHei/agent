@@ -1,3 +1,5 @@
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 module.exports = {
   chainWebpack: config => {
     config.plugin("html").tap(args => {
@@ -17,5 +19,6 @@ module.exports = {
         : "https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.0/spark-md5.js";
       return [{ ...config, normalize, localForage, base64, md5 }];
     });
+    config.plugin("analyzer").use(BundleAnalyzerPlugin);
   }
 };

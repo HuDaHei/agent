@@ -9,11 +9,19 @@ export function formdata(data = {}) {
   }
   return formData;
 }
-// 根据不同的content-type处理data
+// 根据不同的content-type和post处理data
 export function contentTypeFunData(contextType = "", data = {}) {
   const dataEnteries = Object.entries(data);
   const contentTypeFunData = {
-    "application/x-www-form-urlencoded": () => {
+    "application/x-www-form-urlencoded-POST": () => {
+      //name=age&age=18
+      let paramArr = [];
+      for (const [key, value] of dataEnteries) {
+        paramArr.push(`${key}=${value}`);
+      }
+      return paramArr.join("&");
+    },
+    "application/json-GET": () => {
       //name=age&age=18
       let paramArr = [];
       for (const [key, value] of dataEnteries) {
