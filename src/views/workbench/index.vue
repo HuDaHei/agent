@@ -5,6 +5,7 @@
     <div>workbench' workbench'</div>
     <div class="workbench_table_list">
       <vxe-table
+        resizable
         :border="true"
         :align="allAlign"
         :data="tableData"
@@ -37,6 +38,11 @@
         ></vxe-table-column>
         <vxe-table-column field="spend" title="花费"></vxe-table-column>
         <vxe-table-column field="balance" title="余额"></vxe-table-column>
+        <vxe-table-column title="操作" width="100" show-overflow>
+          <template v-slot="{ row }">
+            <el-button @click="handlerAccount(row)">kk</el-button>
+          </template>
+        </vxe-table-column>
       </vxe-table>
       <vxe-pager
         background
@@ -49,7 +55,6 @@
           20,
           100,
           { label: '大量数据', value: 1000 },
-          { label: '全量数据', value: -1 }
         ]"
         :layouts="[
           'PrevPage',
@@ -74,37 +79,48 @@ export default {
     return {
       allAlign: null,
       loading: true,
-      currentPage: 0,
-      pageSize: 0,
+      currentPage: 1,
+      pageSize: 20,
       totalResult: 0,
       tableData: []
     };
   },
   async created() {
-    const data = {
-      page: 1,
-      size: 20,
-      sort: "id",
-      order: "desc",
-      startTime: "2020-09-08",
-      endTime: "2020-09-08"
-    };
-    const {
-      tableData,
-      current: currentPage,
-      size: pageSize,
-      total: totalResult
-    } = await getWorkbenchTableListData({ data });
-    this.loading = false;
-    this.tableData = tableData;
-    this.currentPage = currentPage;
-    this.pageSize = pageSize;
-    this.totalResult = totalResult;
+    await this.init();
   },
   methods: {
-    handlePageChange() {
-      console.log("kkk");
-    }
+    handlePageChange(v) {
+      console.log(v, "kkk");
+      const { currentPage,pageSize} = v;
+      this.currentPage = currentPage;
+      this.pageSize = pageSize;
+      this.init()
+    },
+    async init() {
+      const data = {
+        page: this.currentPage,
+        size: this.pageSize,
+        sort: "id",
+        order: "desc",
+        startTime: "2020-09-08",
+        endTime: "2020-09-08"
+      };
+      this.loading = true;
+      const {
+        tableData,
+        current: currentPage,
+        size: pageSize,
+        total: totalResult
+      } = await getWorkbenchTableListData({ data });
+      this.loading = false;
+      this.tableData = tableData;
+      this.currentPage = currentPage;
+      this.pageSize = pageSize;
+      this.totalResult = totalResult;
+    },
+    handlerAccount(row) {
+      console.log(row, 'row');
+    },
   }
 };
 </script>
