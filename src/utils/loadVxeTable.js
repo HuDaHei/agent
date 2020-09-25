@@ -30,10 +30,10 @@ import {
   //   List
 } from "vxe-table";
 export function loadVxeTable(Vue, i18n) {
-  console.log(i18n)
+  console.log(i18n);
   VXETable.setup({
     i18n: (key, args) => i18n.t(key, args)
-  })
+  });
   Vue.use(VXETable);
   Vue.use(Header);
   Vue.use(Pager);

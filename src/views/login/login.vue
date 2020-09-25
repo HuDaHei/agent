@@ -115,8 +115,8 @@ export default {
             // 创建本地存储的实例
             this.createLocalStore(this.login.loginKey);
             window.sessionStorage.setItem("unique", this.login.loginKey);
-            const unikey = createSingleMd5(this.login.loginKey);
-            console.log(unikey, "unikey");
+            // const unikey = createSingleMd5(this.login.loginKey);
+            // console.log(unikey, "unikey");
             await this.updateUserInfo();
             this.$router.push({ path: "/workbench" });
           } else {
