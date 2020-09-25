@@ -37,7 +37,7 @@ export default {
     drag() {
       const dv = this.$refs["menu"];
       const iframeBoxDOm = this.$refs["iframeBox"];
-      const iframeMark = this.$refs['iframeMark'];
+      const iframeMark = this.$refs["iframeMark"];
       //获取元素
       let x = 0;
       let y = 0;
@@ -55,7 +55,7 @@ export default {
         t = iframeBoxDOm.offsetTop;
         //开关打开
         isDown = true;
-        iframeMark.classList.remove('no_mark')
+        iframeMark.classList.remove("no_mark");
         //设置样式
         dv.style.cursor = "move";
       };
@@ -81,7 +81,7 @@ export default {
         isDown = false;
         this.showMark = false;
         dv.style.cursor = "default";
-        iframeMark.classList.add('no_mark')
+        iframeMark.classList.add("no_mark");
       };
       dv.onmouseleave = function() {
         //   isDown = false;
@@ -119,8 +119,8 @@ export default {
     top: 0;
     background-color: transparent;
   }
-  .no_mark{
-      display: none;
+  .no_mark {
+    display: none;
   }
 }
 .iframe_menu {
