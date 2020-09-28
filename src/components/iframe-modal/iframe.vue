@@ -83,10 +83,6 @@ export default {
         dv.style.cursor = "default";
         iframeMark.classList.add("no_mark");
       };
-      dv.onmouseleave = function() {
-        //   isDown = false;
-        //   dv.style.cursor = "default";
-      };
     }
   }
 };
@@ -103,8 +99,10 @@ export default {
 }
 .iframe_box {
   position: absolute;
-  width: 60%;
-  height: 60%;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
   background-color: #fff;
   border: 1px solid goldenrod;
 }

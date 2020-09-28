@@ -5,24 +5,28 @@
     <div>workbench' workbench'</div>
     <div class="workbench_table_list">
       <vxe-table
-        resizable
         :border="true"
         :align="allAlign"
         :data="tableData"
-        height="auto"
         :loading="loading"
         highlight-hover-row
         highlight-current-row
+        height="auto"
+        resizable
       >
         <vxe-table-column field="platformName" title="媒体"></vxe-table-column>
-        <vxe-table-column field="accountId" title="账号ID"></vxe-table-column>
+        <vxe-table-column field="accountId" title="账号ID" width="180"></vxe-table-column>
         <vxe-table-column
+          show-overflow
           field="corporationName"
           title="公司名称"
+          width="120"
         ></vxe-table-column>
         <vxe-table-column
+          show-overflow
           field="accountName"
           title="公司名称"
+          width="120"
         ></vxe-table-column>
         <vxe-table-column field="pv" title="曝光量"></vxe-table-column>
         <vxe-table-column field="click" title="点击量"></vxe-table-column>
@@ -38,9 +42,9 @@
         ></vxe-table-column>
         <vxe-table-column field="spend" title="花费"></vxe-table-column>
         <vxe-table-column field="balance" title="余额"></vxe-table-column>
-        <vxe-table-column title="操作" width="100" show-overflow>
+        <vxe-table-column title="操作" width="120">
           <template v-slot="{ row }">
-            <el-button @click="handlerAccount(row)">kk</el-button>
+            <el-button @click="handlerAccount(row)">进入账户</el-button>
           </template>
         </vxe-table-column>
       </vxe-table>
@@ -114,7 +118,6 @@ export default {
       this.totalResult = totalResult;
     },
     handlerAccount(row) {
-      console.log(row, "row");
       this.$openIframe(row);
     }
   }
