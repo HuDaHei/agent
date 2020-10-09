@@ -58,14 +58,20 @@
         :current-page="currentPage"
         :page-size="pageSize"
         :total="totalResult"
-        :page-sizes="[10, 20, 100, { label: '大量数据', value: 1000 }]"
+        :page-sizes="[
+          10,
+          20,
+          100,
+          { label: '大量数据', value: 1000 },
+          { label: '全量数据', value: -1 },
+        ]"
         :layouts="[
           'PrevPage',
           'JumpNumber',
           'NextPage',
           'FullJump',
           'Sizes',
-          'Total'
+          'Total',
         ]"
         @page-change="handlePageChange"
       >
@@ -85,46 +91,35 @@ export default {
       currentPage: 1,
       pageSize: 20,
       totalResult: 0,
-      tableData: []
+      tableData: [],
     };
   },
   async created() {
-    await this.init();
+    const data = {
+      page: 1,
+      size: 20,
+      sort: "id",
+      order: "desc",
+      startTime: "2020-09-08",
+      endTime: "2020-09-08",
+    };
+    const {
+      tableData,
+      current: currentPage,
+      size: pageSize,
+      total: totalResult,
+    } = await getWorkbenchTableListData({ data });
+    this.loading = false;
+    this.tableData = tableData;
+    this.currentPage = currentPage;
+    this.pageSize = pageSize;
+    this.totalResult = totalResult;
   },
   methods: {
-    handlePageChange(v) {
-      console.log(v, "kkk");
-      const { currentPage, pageSize } = v;
-      this.currentPage = currentPage;
-      this.pageSize = pageSize;
-      this.init();
+    handlePageChange() {
+      console.log("kkk");
     },
-    async init() {
-      const data = {
-        page: this.currentPage,
-        size: this.pageSize,
-        sort: "id",
-        order: "desc",
-        startTime: "2020-09-08",
-        endTime: "2020-09-08"
-      };
-      this.loading = true;
-      const {
-        tableData,
-        current: currentPage,
-        size: pageSize,
-        total: totalResult
-      } = await getWorkbenchTableListData({ data });
-      this.loading = false;
-      this.tableData = tableData;
-      this.currentPage = currentPage;
-      this.pageSize = pageSize;
-      this.totalResult = totalResult;
-    },
-    handlerAccount(row) {
-      this.$openIframe(row);
-    }
-  }
+  },
 };
 </script>
 

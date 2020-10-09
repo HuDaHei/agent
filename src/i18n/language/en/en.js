@@ -1,4 +1,4 @@
 const en = {
-  test: "test"
+  test: "test",
 };
 export default en;

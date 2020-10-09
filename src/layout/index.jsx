@@ -6,7 +6,7 @@ const layoutMenu = {
   name: "layoutNav",
   data() {
     return {
-      defaultActive: ""
+      defaultActive: "",
     };
   },
   computed: {
@@ -14,11 +14,11 @@ const layoutMenu = {
     routes() {
       const routes = this.$router.options.routes;
       return (
-        routes.filter(r => {
+        routes.filter((r) => {
           return Reflect.has(r, "meta") && Reflect.has(r.meta, "menuName");
         }) || []
       );
-    }
+    },
   },
   created() {
     const { matched = [] } = this.$route;
@@ -28,11 +28,11 @@ const layoutMenu = {
   },
   methods: {
     handlerActiveRouter() {
-      const editDefaultActive = data => {
+      const editDefaultActive = (data) => {
         this.defaultActive = data;
       };
       return debounce(editDefaultActive, 500);
-    }
+    },
   },
   render() {
     return (
@@ -50,7 +50,7 @@ const layoutMenu = {
                 default-active={this.defaultActive}
                 onSelect={this.handlerActiveRouter()}
               >
-                {this.routes.map(r => {
+                {this.routes.map((r) => {
                   const { path, meta = {} } = r;
                   const { menuName } = meta;
                   return <el-menu-item index={path}>{menuName}</el-menu-item>;
@@ -77,7 +77,7 @@ const layoutMenu = {
         </section>
       </section>
     );
-  }
+  },
 };
 
 export default layoutMenu;

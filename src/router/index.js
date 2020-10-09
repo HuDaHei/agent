@@ -6,30 +6,30 @@ Vue.use(VueRouter);
 const routesInit = [
   {
     path: "/",
-    redirect: "/login"
+    redirect: "/login",
   },
   {
     path: "/login",
     name: "login",
-    component: Login
-  }
+    component: Login,
+  },
 ];
 let routes = [];
 // 获取各个文件夹下的router.js
 const requireRouter = require.context("./../views", true, /router+\.js$/);
-requireRouter.keys().forEach(filename => {
+requireRouter.keys().forEach((filename) => {
   const { router, position } = requireRouter(filename).default;
   if (!Reflect.get(routes, position)) {
     routes[position] = router;
   }
 });
-routes = routes.filter(r => r);
+routes = routes.filter((r) => r);
 routes = routesInit.concat(...routes);
 console.log(routes, "routes");
 //////////////////////////
 const router = new VueRouter({
   // mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 export default router;

@@ -1,15 +1,15 @@
 import IFrame from "@/components/iframe-modal/iframe.vue";
-const loadIframe = Vue => {
+const loadIframe = (Vue) => {
   const IframeConstructor = Vue.extend(IFrame);
   const parent = document.body;
-  const render = data => {
+  const render = (data) => {
     const iframeInstance = new IframeConstructor({
       el: document.createElement("div"),
-      data
+      data,
     });
     parent.appendChild(iframeInstance.$el);
   };
-  const openIframe = data => {
+  const openIframe = (data) => {
     render(data);
   };
   Vue.prototype.$openIframe = openIframe;

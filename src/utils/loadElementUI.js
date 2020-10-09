@@ -8,7 +8,7 @@ import {
   MenuItem,
   Dropdown,
   DropdownItem,
-  DropdownMenu
+  DropdownMenu,
 } from "element-ui";
 export function loadElementUI(Vue) {
   Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };

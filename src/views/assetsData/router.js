@@ -6,7 +6,7 @@ const assetsData = [
     component: Layout,
     meta: {
       menuName: "数据资产",
-      permissionCode: "has-example"
+      permissionCode: "has-example",
     },
     children: [
       {
@@ -22,8 +22,8 @@ const assetsData = [
             component: () => import(/* webpackChunkName: "assetsData" */ "@/views/assetsData/survery/index.vue"),
             meta: {
               menuName: "数据资产概况",
-              icon: "iconfont iconzichangaikuang"
-            }
+              icon: "iconfont iconzichangaikuang",
+            },
           },
           {
             path: "manage",
@@ -32,16 +32,16 @@ const assetsData = [
             component: () => import(/* webpackChunkName: "manage" */ "@/views/assetsData/manage/index.vue"),
             meta: {
               menuName: "数据资产管理",
-              icon: "iconfont iconzichanguanli"
-            }
-          }
-        ]
-      }
-    ]
-  }
+              icon: "iconfont iconzichanguanli",
+            },
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export default {
   router: assetsData,
-  position: 1
+  position: 1,
 };

@@ -2,9 +2,7 @@
   <div class="iframe_container">
     <div class="iframe_box" ref="iframeBox">
       <div class="iframe_menu">
-        <div ref="menu" class="menu_drag">
-          拖动div
-        </div>
+        <div ref="menu" class="menu_drag">拖动div</div>
         <div class="menu_item">
           <span>最小化</span>
           <span>最大化</span>
@@ -16,7 +14,7 @@
         <iframe
           src="http://192.168.0.176:8080/#/assetsData/survey"
           frameborder="0"
-          style="height:100%;width:100%"
+          style="height: 100%; width: 100%"
         ></iframe>
       </div>
     </div>
@@ -27,7 +25,7 @@ export default {
   name: "iframeBox",
   data() {
     return {
-      showMark: false
+      showMark: false,
     };
   },
   mounted() {
@@ -45,7 +43,7 @@ export default {
       let t = 0;
       let isDown = false;
       //鼠标按下事件
-      dv.onmousedown = function(e) {
+      dv.onmousedown = function (e) {
         //获取x坐标和y坐标
         x = e.clientX;
         y = e.clientY;
@@ -60,7 +58,7 @@ export default {
         dv.style.cursor = "move";
       };
       //鼠标移动
-      window.onmousemove = function(e) {
+      window.onmousemove = function (e) {
         if (isDown == false) {
           return;
         }
@@ -75,7 +73,7 @@ export default {
         iframeBoxDOm.style.top = nt + "px";
       };
       //鼠标抬起事件
-      window.onmouseup = function() {
+      window.onmouseup = function () {
         //开关关闭
         console.log("鼠标松开");
         isDown = false;
@@ -83,8 +81,8 @@ export default {
         dv.style.cursor = "default";
         iframeMark.classList.add("no_mark");
       };
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

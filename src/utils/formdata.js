@@ -28,7 +28,7 @@ export function contentTypeFunData(contextType = "", data = {}) {
         paramArr.push(`${key}=${value}`);
       }
       return paramArr.join("&");
-    }
+    },
   };
   const fun = Reflect.get(contentTypeFunData, contextType) || (() => {});
   return fun();

@@ -7,7 +7,7 @@ import {
   Select,
   Column,
   Pager,
-  Header
+  Header,
   //   Footer,
   //   Filter,
   //   Edit,
@@ -31,7 +31,7 @@ import {
 } from "vxe-table";
 export function loadVxeTable(Vue, i18n) {
   VXETable.setup({
-    i18n: (key, args) => i18n.t(key, args)
+    i18n: (key, args) => i18n.t(key, args),
   });
   Vue.use(VXETable);
   Vue.use(Header);

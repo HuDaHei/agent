@@ -7,12 +7,12 @@ async function getLocalvuexState(type) {
 }
 // types 需要持久化的muateion type
 export function createVuexPersistence(types = []) {
-  return store => {
-    types.forEach(async t => {
+  return (store) => {
+    types.forEach(async (t) => {
       const payload = await getLocalvuexState(t);
       t && store.commit(t, payload);
     });
-    store.subscribe(mutation => {
+    store.subscribe((mutation) => {
       const { type, payload } = mutation;
       if (types.includes(type)) {
         window.$localStorage && window.$localStorage.setItem(type, payload);

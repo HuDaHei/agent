@@ -54,7 +54,7 @@ export function randomWord(num = 14) {
     "W",
     "X",
     "Y",
-    "Z"
+    "Z",
   ];
   const wordLen = randomword.length;
   let randomStr = "";

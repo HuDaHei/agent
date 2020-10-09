@@ -6,19 +6,19 @@ const workbench = [
     component: Layout,
     meta: {
       menuName: "工作台",
-      permissionCode: "workbench-module"
+      permissionCode: "workbench-module",
     },
     children: [
       {
         path: "",
         // eslint-disable-next-line prettier/prettier
         component: () => import(/* webpackChunkName: "workbench" */ "./index.vue"),
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
 
 export default {
   router: workbench,
-  position: 0
+  position: 0,
 };

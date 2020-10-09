@@ -1,8 +1,8 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 module.exports = {
-  chainWebpack: config => {
-    config.plugin("html").tap(args => {
+  chainWebpack: (config) => {
+    config.plugin("html").tap((args) => {
       const isProd = process.env.NODE_ENV === "production";
       const normalize = isProd
         ? "https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -24,8 +24,8 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        prependData: `@import "~@/style/variables.scss";`
-      }
-    }
-  }
+        prependData: `@import "~@/style/variables.scss";`,
+      },
+    },
+  },
 };
