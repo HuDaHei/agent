@@ -18,4 +18,7 @@ const fsRepalceField = [
   }
 ];
 
-export default fsRepalceField;
+export default {
+  router:fsRepalceField,
+  position:fsRepalcePosition
+};
