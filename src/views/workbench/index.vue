@@ -15,7 +15,11 @@
         resizable
       >
         <vxe-table-column field="platformName" title="媒体"></vxe-table-column>
-        <vxe-table-column field="accountId" title="账号ID" width="180"></vxe-table-column>
+        <vxe-table-column
+          field="accountId"
+          title="账号ID"
+          width="180"
+        ></vxe-table-column>
         <vxe-table-column
           show-overflow
           field="corporationName"
