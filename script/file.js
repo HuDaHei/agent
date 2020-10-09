@@ -18,6 +18,11 @@ const ask = async () => {
       message: "一级菜单名称"
     },
     {
+      name: "POSITION",
+      type: "input",
+      message: "菜单位置"
+    },
+    {
       name: "HASTWOMENU",
       type: "confirm",
       message: "是有有二级菜单"
@@ -53,6 +58,7 @@ const replaceFile = (filePath = "", mkFilePath = "") => {
       fileStr = fileStr.replace(/fsRepalceMenuName/g, state.MENUNAME);
       fileStr = fileStr.replace(/twomenupathname/g, state.TWOMENUPATHNAME);
       fileStr = fileStr.replace(/twomenupathcnname/g, state.TWOMENUNAME);
+      fileStr = fileStr.replace(/fsRepalcePosition/g, state.POSITION);
       fs.writeFile(mkFilePath, fileStr, err => {
         if (err) throw { err, type: "writeFile" };
       });

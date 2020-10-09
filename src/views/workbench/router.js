@@ -18,4 +18,7 @@ const workbench = [
   }
 ];
 
-export default workbench;
+export default {
+  router: workbench,
+  position: 0
+};

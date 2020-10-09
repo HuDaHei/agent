@@ -41,4 +41,7 @@ const assetsData = [
   }
 ];
 
-export default assetsData;
+export default {
+  router: assetsData,
+  position: 1
+};
