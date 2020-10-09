@@ -8,7 +8,7 @@ import { loadElementUI } from "@/utils/loadElementUI.js";
 import { post } from "@/utils/fetch.js";
 import { permission } from "@/mixin/global.js";
 import { loadVxeTable } from "@/utils/loadVxeTable.js";
-import {loadI18n} from '@/i18n/index.js';
+import { loadI18n } from "@/i18n/index.js";
 Vue.config.productionTip = false;
 Vue.prototype.$_post = post;
 Vue.mixin(permission); // 全局混合
