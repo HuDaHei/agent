@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Login from "@/views/login/login.vue";
 Vue.use(VueRouter);
 // init
-const routes = [
+const routesInit = [
   {
     path: "/",
     redirect: "/login"
@@ -14,14 +14,18 @@ const routes = [
     component: Login
   }
 ];
-
+let routes = [];
 // 获取各个文件夹下的router.js
 const requireRouter = require.context("./../views", true, /router+\.js$/);
 requireRouter.keys().forEach(filename => {
-  const singleRouterConfigArr = requireRouter(filename).default;
-  const [config] = singleRouterConfigArr;
-  routes.push(config);
+  const { router, position } = requireRouter(filename).default;
+  if (!Reflect.get(routes, position)) {
+    routes[position] = router;
+  }
 });
+routes = routes.filter(r => r);
+routes = routesInit.concat(...routes);
+console.log(routes, "routes");
 //////////////////////////
 const router = new VueRouter({
   // mode: "history",
