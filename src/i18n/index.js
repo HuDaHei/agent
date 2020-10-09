@@ -6,18 +6,18 @@ import EN from "@/i18n/language/en/en.js";
 const messages = {
   zh_CN: {
     ...zhCN,
-    ...ZH
+    ...ZH,
   },
   en_US: {
     ...enUS,
-    ...EN
-  }
+    ...EN,
+  },
 };
 export function loadI18n(Vue) {
   Vue.use(VueI18n);
   const i18n = new VueI18n({
     locale: "zh_CN",
-    messages
+    messages,
   });
   return i18n;
 }

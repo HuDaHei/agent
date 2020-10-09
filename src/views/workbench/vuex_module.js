@@ -1,10 +1,10 @@
 const workbench = {
   namespaced: true,
   state: {
-    name: "workbenchModule"
+    name: "workbenchModule",
   },
   mutations: {},
   actions: {},
-  getters: {}
+  getters: {},
 };
 export default workbench;

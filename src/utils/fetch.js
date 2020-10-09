@@ -10,21 +10,21 @@ const operateStatus = (status, msg = "API未知错误") => {
       () => {
         Message.error(msg);
         throw new Error(msg);
-      }
+      },
     ],
     [
       500,
       () => {
         Message.error(msg);
         throw new Error(msg);
-      }
+      },
     ],
     [
       200,
       () => {
         // confirm("请求成功");
-      }
-    ]
+      },
+    ],
   ]);
   const statusFun = statusMap.get(status) || (() => {});
   statusFun();
@@ -38,7 +38,7 @@ export async function post(url = "", config = {}) {
       headers = {
         "Content-Type": "application/json",
         Authorization: getCookie("jwt-token"),
-        ...headers
+        ...headers,
       };
       const contentType = Reflect.get(headers, "Content-Type");
       data = contentTypeFunData(`${contentType}-${method}`, data);
@@ -47,7 +47,7 @@ export async function post(url = "", config = {}) {
         mode: "cors",
         method,
         ...config,
-        headers
+        headers,
       });
       const { status } = fetchRes;
       const result = await fetchRes.json();
@@ -69,7 +69,7 @@ export async function get(url, config = {}) {
       headers = {
         "Content-Type": "application/json",
         Authorization: getCookie("jwt-token"),
-        ...headers
+        ...headers,
       };
       const contentType = Reflect.get(headers, "Content-Type");
       data = contentTypeFunData(`${contentType}-${method}`, data);
@@ -79,7 +79,7 @@ export async function get(url, config = {}) {
           method,
           mode: "cors",
           ...config,
-          headers
+          headers,
         }
       );
       const { status } = fetchRes;

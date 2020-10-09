@@ -1,10 +1,10 @@
 const assetsData = {
   namespaced: true,
   state: {
-    name: "assetsDataModule"
+    name: "assetsDataModule",
   },
   mutations: {},
   actions: {},
-  getters: {}
+  getters: {},
 };
 export default assetsData;

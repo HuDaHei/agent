@@ -3,6 +3,6 @@
 export function localStore(unique = "") {
   // eslint-disable-next-line no-undef
   window.$localStorage = localforage.createInstance({
-    name: unique
+    name: unique,
   });
 }

@@ -8,7 +8,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      loading: false
+      loading: false,
     };
   },
   async mounted() {
@@ -21,8 +21,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["updateUserInfo"])
-  }
+    ...mapActions(["updateUserInfo"]),
+  },
 };
 </script>
 <style lang="scss">

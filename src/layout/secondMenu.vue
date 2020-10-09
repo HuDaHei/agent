@@ -25,7 +25,7 @@ export default {
   name: "secondLevelMenu",
   data() {
     return {
-      second: []
+      second: [],
     };
   },
   mounted() {
@@ -38,14 +38,14 @@ export default {
       const [, oneLevelRoutePath = "yhushey"] = fullPath.split("/");
       const routes = this.$router.options.routes;
       const currentRoutes =
-        routes.find(r => {
+        routes.find((r) => {
           return r.path.includes(oneLevelRoutePath);
         }) || [];
       const { children = [] } = currentRoutes;
       const [seconde = {}] = children;
       return seconde.children || [];
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scope>
