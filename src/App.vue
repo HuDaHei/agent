@@ -12,7 +12,7 @@ export default {
     };
   },
   async mounted() {
-    // 当前页不是登录页 就获取用户数据
+    // 当前页不是登录页 就获取用户数据s
     if (this.$route.name !== "login") {
       await this.updateUserInfo();
       this.loading = true;
