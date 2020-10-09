@@ -9,12 +9,12 @@ const requireVuexModule = require.context(
   /vuex_module+\.js$/
 );
 // 自动注册modules
-requireVuexModule.keys().forEach(filename => {
+requireVuexModule.keys().forEach((filename) => {
   const moduleName = filename.split("/")[1];
   const module = requireVuexModule(filename);
   Reflect.set(modules, moduleName, module.default);
 });
 export default new Vuex.Store({
   ...initState,
-  modules
+  modules,
 });

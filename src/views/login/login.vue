@@ -57,8 +57,8 @@ export default {
         captchaType: "GRAPHIC",
         captchaValue: "",
         rememberMe: false,
-        captchaKey: uuid()
-      }
+        captchaKey: uuid(),
+      },
     };
   },
   computed: {
@@ -68,7 +68,7 @@ export default {
           Math.random() * 13
         )}.jpg)`,
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       };
     },
     captchaImg() {
@@ -80,34 +80,34 @@ export default {
           {
             required: true,
             message: "请输入邮箱或手机号",
-            trigger: ["change", "submit"]
-          }
+            trigger: ["change", "submit"],
+          },
         ],
         password: [
           {
             required: true,
             message: "请输入密码",
-            trigger: ["change", "submit"]
-          }
+            trigger: ["change", "submit"],
+          },
         ],
         captchaValue: [
           {
             required: true,
             message: "请输入验证码",
-            trigger: ["change", "submit"]
-          }
-        ]
+            trigger: ["change", "submit"],
+          },
+        ],
       };
-    }
+    },
   },
   methods: {
     ...mapActions(["updateUserInfo"]),
     handlerLogin(ref = "") {
-      this.$refs[ref].validate(async valid => {
+      this.$refs[ref].validate(async (valid) => {
         if (valid) {
           const res = await this.$_post("/ucenter/sessions/action/login", {
             data: this.login,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
           });
           const { token = "" } = res || {};
           if (token.length) {
@@ -133,8 +133,8 @@ export default {
     createLocalStore(unique = "") {
       // 创建本地存储的是实例 后续所有数据通过$localStore方式存储;
       localStore(unique);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
