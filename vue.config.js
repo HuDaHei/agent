@@ -20,5 +20,12 @@ module.exports = {
       return [{ ...config, normalize, localForage, base64, md5 }];
     });
     config.plugin("analyzer").use(BundleAnalyzerPlugin);
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/style/variables.scss";`
+      },
+    }
   }
 };

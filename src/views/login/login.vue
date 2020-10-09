@@ -155,7 +155,7 @@ export default {
     border-radius: 3px;
     h4 {
       font-size: 30px;
-      color: #333;
+      color: $g_color;
       white-space: nowrap;
       text-align: center;
     }
