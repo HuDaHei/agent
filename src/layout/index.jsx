@@ -65,13 +65,8 @@ const layoutMenu = {
               >
                 {this.routes.map((r) => {
                   const { path, meta = {} } = r;
-                  const { menuName, permissionCode } = meta;
-                  const hasPermission = this.$_hasPermisson(permissionCode);
-                  return hasPermission ? (
-                    <el-menu-item index={path}>{menuName}</el-menu-item>
-                  ) : (
-                    ""
-                  );
+                  const { menuName } = meta;
+                  return <el-menu-item index={path}>{menuName}</el-menu-item>;
                 })}
               </el-menu>
             </nav>

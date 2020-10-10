@@ -6,7 +6,8 @@ const assetsData = [
     component: Layout,
     meta: {
       menuName: "数据资产",
-      permissionCode: "freedom",
+      permissionCode:
+        "marketing-data-asset-list$marketing-data-asset-overviews",
     },
     children: [
       {
@@ -23,7 +24,7 @@ const assetsData = [
             meta: {
               menuName: "数据资产概况",
               icon: "iconfont iconzichangaikuang",
-              permissionCode: "freedom",
+              permissionCode: "marketing-data-asset-overview",
             },
           },
           {
@@ -34,7 +35,7 @@ const assetsData = [
             meta: {
               menuName: "数据资产管理",
               icon: "iconfont iconzichanguanli",
-              permissionCode: "freedoms",
+              permissionCode: "marketing-data-asset-lists",
             },
           },
         ],
