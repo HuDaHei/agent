@@ -15,18 +15,31 @@
       </template>
     </div>
     <div class="second_nav_content">
-      <router-view></router-view>
+      <premission-router-view
+        :permissionCode="permissionCode"
+      ></premission-router-view>
     </div>
   </div>
 </template>
 
 <script>
+import permissionRouterView from "@/components/permission-router-view/index.vue";
 export default {
   name: "secondLevelMenu",
+  components: {
+    "premission-router-view": permissionRouterView,
+  },
   data() {
     return {
       second: [],
     };
+  },
+  computed: {
+    permissionCode() {
+      const meta = this.$route.meta;
+      const { permissionCode } = meta;
+      return permissionCode;
+    },
   },
   mounted() {
     this.second = Object.freeze(this.getSecondDLevel());
@@ -44,6 +57,9 @@ export default {
       const { children = [] } = currentRoutes;
       const [seconde = {}] = children;
       return seconde.children || [];
+    },
+    handlerNav(router) {
+      console.log(router, "router");
     },
   },
 };

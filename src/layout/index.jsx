@@ -2,11 +2,16 @@ import "./index.scss";
 import navLogo from "@/assets/navLogo.svg";
 import { mapGetters } from "vuex";
 import { debounce } from "lodash";
+import permissionRouterView from "@/components/permission-router-view/index.vue";
 const layoutMenu = {
   name: "layoutNav",
+  components: {
+    "premission-router-view": permissionRouterView,
+  },
   data() {
     return {
       defaultActive: "",
+      permissionCode: "",
     };
   },
   computed: {
@@ -18,6 +23,14 @@ const layoutMenu = {
           return Reflect.has(r, "meta") && Reflect.has(r.meta, "menuName");
         }) || []
       );
+    },
+  },
+  watch: {
+    defaultActive(path) {
+      const currentRouter = this.routes.find((r) => r.path === path) || {};
+      const { meta } = currentRouter;
+      const { permissionCode } = meta;
+      this.permissionCode = permissionCode;
     },
   },
   created() {
@@ -50,7 +63,7 @@ const layoutMenu = {
                 default-active={this.defaultActive}
                 onSelect={this.handlerActiveRouter()}
               >
-                {this.routes.map((r) => {  
+                {this.routes.map((r) => {
                   const { path, meta = {} } = r;
                   const { menuName, permissionCode } = meta;
                   const hasPermission = this.$_hasPermisson(permissionCode);
@@ -78,7 +91,9 @@ const layoutMenu = {
           </div>
         </section>
         <section class="first_nav_content">
-          <router-view></router-view>
+          <premission-router-view
+            permissionCode={this.permissionCode}
+          ></premission-router-view>
         </section>
       </section>
     );

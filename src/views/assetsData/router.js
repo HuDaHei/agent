@@ -23,7 +23,7 @@ const assetsData = [
             meta: {
               menuName: "数据资产概况",
               icon: "iconfont iconzichangaikuang",
-              permissionCode: "freedomew",
+              permissionCode: "freedom",
             },
           },
           {
@@ -34,7 +34,7 @@ const assetsData = [
             meta: {
               menuName: "数据资产管理",
               icon: "iconfont iconzichanguanli",
-              permissionCode: "freedom",
+              permissionCode: "freedoms",
             },
           },
         ],
