@@ -23,7 +23,7 @@ const assetsData = [
             meta: {
               menuName: "数据资产概况",
               icon: "iconfont iconzichangaikuang",
-              permissionCode: "freedome",
+              permissionCode: "freedomew",
             },
           },
           {

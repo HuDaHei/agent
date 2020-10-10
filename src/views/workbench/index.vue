@@ -1,7 +1,7 @@
 <template>
   <section class="workbench_container">
     <h4>workbench'</h4>
-    <!-- <div v-if="$_hasPermisson('we')">werwer</div> -->
+    <div v-if="$_hasPermisson('freedome')">werwer</div>
     <div>workbench' workbench'</div>
     <div class="workbench_table_list">
       <vxe-table
