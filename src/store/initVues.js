@@ -29,6 +29,10 @@ const getters = {
   getUserName: (state) => {
     return state.userInfo.username;
   },
+  getPermissionsCode: (state) => {
+    const temp = state.userInfo.permissions || [];
+    return [...temp, "freedom"];
+  },
 };
 
 export default {

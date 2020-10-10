@@ -11,6 +11,9 @@ const routesInit = [
   {
     path: "/login",
     name: "login",
+    meta: {
+      permissionCode: "freedom",
+    },
     component: Login,
   },
 ];
@@ -25,7 +28,6 @@ requireRouter.keys().forEach((filename) => {
 });
 routes = routes.filter((r) => r);
 routes = routesInit.concat(...routes);
-console.log(routes, "routes");
 //////////////////////////
 const router = new VueRouter({
   // mode: "history",

@@ -10,6 +10,8 @@ import { permission } from "@/mixin/global.js";
 import { loadVxeTable } from "@/utils/loadVxeTable.js";
 import { loadI18n } from "@/i18n/index.js";
 import loadIframe from "@/components/iframe-modal/index.js";
+import { permissionFun } from "@/router/permission.js";
+
 Vue.config.productionTip = false;
 Vue.prototype.$_post = post;
 Vue.mixin(permission); // 全局混合
@@ -17,6 +19,7 @@ loadElementUI(Vue); // 按需加载elementui组件
 const i18n = loadI18n(Vue); //国际化
 loadVxeTable(Vue, i18n); // 按需加载表格组件
 loadIframe(Vue); // 加载iframe弹层组件全局
+permissionFun(router, store);
 new Vue({
   router,
   store,
