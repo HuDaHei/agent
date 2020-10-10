@@ -2,7 +2,6 @@ import Layout from "@/layout/index.jsx";
 const workbench = [
   {
     path: "/workbench",
-    // name: "onemenu", 一级路由不要设置name属性
     component: Layout,
     meta: {
       menuName: "工作台",
@@ -11,8 +10,8 @@ const workbench = [
     children: [
       {
         path: "",
-        // eslint-disable-next-line prettier/prettier
-        component: () => import(/* webpackChunkName: "workbench" */ "./index.vue"),
+        component: () =>
+          import(/* webpackChunkName: "workbench" */ "./index.vue"),
       },
     ],
   },
