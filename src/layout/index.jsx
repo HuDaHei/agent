@@ -1,7 +1,7 @@
 import "./index.scss";
 import navLogo from "@/assets/navLogo.svg";
 import { mapGetters } from "vuex";
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 import permissionRouterView from "@/components/permission-router-view/index.vue";
 const layoutMenu = {
   name: "layoutNav",
@@ -40,11 +40,13 @@ const layoutMenu = {
     this.defaultActive = defaultActive; // 浏览器刷新后确定当前的默认激活菜单
   },
   methods: {
-    handlerActiveRouter() {
-      const editDefaultActive = (data) => {
-        this.defaultActive = data;
-      };
-      return debounce(editDefaultActive, 500);
+    handlerActiveRouter(data) {
+      this.defaultActive = data;
+
+      // const editDefaultActive = (data) => {
+      //   this.defaultActive = data;
+      // };
+      // return debounce(editDefaultActive, 500);
     },
   },
   render() {
@@ -61,7 +63,7 @@ const layoutMenu = {
                 mode="horizontal"
                 router={true}
                 default-active={this.defaultActive}
-                onSelect={this.handlerActiveRouter()}
+                onSelect={this.handlerActiveRouter}
               >
                 {this.routes.map((r) => {
                   const { path, meta = {} } = r;
