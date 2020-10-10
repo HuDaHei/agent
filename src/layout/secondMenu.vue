@@ -29,20 +29,15 @@ export default {
   components: {
     "premission-router-view": permissionRouterView,
   },
-  data() {
-    return {
-      second: [],
-    };
-  },
   computed: {
     permissionCode() {
       const meta = this.$route.meta;
       const { permissionCode } = meta;
       return permissionCode;
     },
-  },
-  mounted() {
-    this.second = Object.freeze(this.getSecondDLevel());
+    second() {
+      return Object.freeze(this.getSecondDLevel());
+    }
   },
   methods: {
     // 获取二级路由数据
@@ -57,9 +52,6 @@ export default {
       const { children = [] } = currentRoutes;
       const [seconde = {}] = children;
       return seconde.children || [];
-    },
-    handlerNav(router) {
-      console.log(router, "router");
     },
   },
 };
