@@ -24,6 +24,7 @@ const organization = [
                 /* webpackChunkName: "organization" */ "@/views/organization/people/index.vue"
               ),
             meta: {
+              icon: "iconfont iconrenyuanguanli",
               menuName: "人员管理",
               permissionCode: "freedom",
             },
@@ -36,6 +37,7 @@ const organization = [
                 /* webpackChunkName: "organization" */ "@/views/organization/permission/index.vue"
               ),
             meta: {
+              icon: "iconfont iconquanxian",
               menuName: "权限管理",
               permissionCode: "freedom",
             },

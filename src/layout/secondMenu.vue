@@ -37,7 +37,7 @@ export default {
     },
     second() {
       return Object.freeze(this.getSecondDLevel());
-    }
+    },
   },
   methods: {
     // 获取二级路由数据
@@ -75,6 +75,9 @@ $activeColor: #51c75b;
     border-bottom: 2px solid transparent;
   }
   &_content {
+    height: calc(100vh - 88px);
+    min-height: 500px;
+    overflow: hidden;
     margin-top: 10px;
   }
 }

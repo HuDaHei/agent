@@ -9,6 +9,7 @@ import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Scrollbar,
 } from "element-ui";
 export function loadElementUI(Vue) {
   Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };
@@ -21,4 +22,5 @@ export function loadElementUI(Vue) {
   Vue.use(Dropdown);
   Vue.use(DropdownItem);
   Vue.use(DropdownMenu);
+  Vue.use(Scrollbar);
 }
