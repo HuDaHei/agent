@@ -15,7 +15,8 @@ const fsRepalceField = [
           {
             path: "",
             name: "twomenupathname",
-            component: () => import(/* webpackChunkName: "fsRepalceField" */ "./index.vue"),
+            // eslint-disable-next-line prettier/prettier
+            component: () => import(/* webpackChunkName: "fsRepalceField" */ "./twomenu.vue"),
             meta: {
               menuName: "twomenupathcnname"
             }
