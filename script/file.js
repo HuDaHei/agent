@@ -30,6 +30,11 @@ const ask = async () => {
   ];
   const twoquestions = [
     {
+      name: "TWOMENUPATH",
+      type: "input",
+      message: "二级菜单router的path(不要添加根路径/)"
+    },
+    {
       name: "TWOMENUPATHNAME",
       type: "input",
       message: "二级菜单router的name名称"
@@ -57,6 +62,7 @@ const replaceFile = (filePath = "", mkFilePath = "") => {
       fileStr = fileStr.replace(/fsRepalceField/g, state.DIRNAME);
       fileStr = fileStr.replace(/fsRepalceMenuName/g, state.MENUNAME);
       fileStr = fileStr.replace(/twomenupathname/g, state.TWOMENUPATHNAME);
+      fileStr = fileStr.replace(/twomenupath/g, state.TWOMENUPATH);
       fileStr = fileStr.replace(/twomenupathcnname/g, state.TWOMENUNAME);
       fileStr = fileStr.replace(/fsRepalcePosition/g, state.POSITION);
       fs.writeFile(mkFilePath, fileStr, err => {
