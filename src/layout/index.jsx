@@ -1,7 +1,6 @@
 import "./index.scss";
 import navLogo from "@/assets/navLogo.svg";
 import { mapGetters } from "vuex";
-// import { debounce } from "lodash";
 import permissionRouterView from "@/components/permission-router-view/index.vue";
 const layoutMenu = {
   name: "layoutNav",
