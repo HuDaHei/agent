@@ -3,7 +3,7 @@
     <div class="second_nav_menu">
       <template v-for="r in second">
         <router-link
-          :key="r.path"
+          :key="r.name"
           :to="{ name: r.name }"
           active-class="active-class"
           class="second_nav_sub"

@@ -14,14 +14,29 @@ const organization = [
           import(
             /* webpackChunkName: "organization" */ "@/layout/secondMenu.vue"
           ),
+        redirect: "/organization/people-manage",
         children: [
           {
-            path: "",
-            name: "people",
+            path: "people-manage",
+            name: "peopleManage",
             component: () =>
-              import(/* webpackChunkName: "organization" */ "./twomenu.vue"),
+              import(
+                /* webpackChunkName: "organization" */ "@/views/organization/people/index.vue"
+              ),
             meta: {
               menuName: "人员管理",
+              permissionCode: "freedom",
+            },
+          },
+          {
+            path: "permission-manage",
+            name: "permissionManage",
+            component: () =>
+              import(
+                /* webpackChunkName: "organization" */ "@/views/organization/permission/index.vue"
+              ),
+            meta: {
+              menuName: "权限管理",
               permissionCode: "freedom",
             },
           },
