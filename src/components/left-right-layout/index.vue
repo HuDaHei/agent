@@ -1,8 +1,10 @@
 <template>
   <div class="left_right_layout">
     <div class="layout_left">
-      <div>头部</div>
-      <el-scrollbar> kkk </el-scrollbar>
+      <slot name="title"></slot>
+      <el-scrollbar style="height:calc(100% - 90px);overflow:hidden">
+        <slot name="list"></slot>
+      </el-scrollbar>
     </div>
     <div class="layout_right">right</div>
   </div>
@@ -13,17 +15,21 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+$bg_color:#fff;
 .left_right_layout {
   display: flex;
   height: 100%;
   .layout_left {
     min-width: 250px;
     margin-right: 10px;
-    background-color: cornflowerblue;
+    background-color: $bg_color;
   }
   .layout_right {
     flex: 1;
-    background-color: cadetblue;
+    background-color: $bg_color;
+  }
+  & ::v-deep .el-scrollbar__wrap{
+    overflow-x: hidden;
   }
 }
 </style>

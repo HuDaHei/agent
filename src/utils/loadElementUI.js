@@ -10,9 +10,10 @@ import {
   DropdownItem,
   DropdownMenu,
   Scrollbar,
+  Tree,
 } from "element-ui";
 export function loadElementUI(Vue) {
-  Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };
+  Vue.prototype.$ELEMENT = { size: "mini", zIndex: 3000 };
   Vue.use(Input);
   Vue.use(Form);
   Vue.use(FormItem);
@@ -23,4 +24,5 @@ export function loadElementUI(Vue) {
   Vue.use(DropdownItem);
   Vue.use(DropdownMenu);
   Vue.use(Scrollbar);
+  Vue.use(Tree);
 }
