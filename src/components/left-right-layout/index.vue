@@ -2,7 +2,7 @@
   <div class="left_right_layout">
     <div class="layout_left">
       <slot name="title"></slot>
-      <el-scrollbar style="height:calc(100% - 90px);overflow:hidden">
+      <el-scrollbar style="height: calc(100% - 90px); overflow: hidden">
         <slot name="list"></slot>
       </el-scrollbar>
     </div>
@@ -15,7 +15,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-$bg_color:#fff;
+$bg_color: #fff;
 .left_right_layout {
   display: flex;
   height: 100%;
@@ -28,7 +28,7 @@ $bg_color:#fff;
     flex: 1;
     background-color: $bg_color;
   }
-  & ::v-deep .el-scrollbar__wrap{
+  & ::v-deep .el-scrollbar__wrap {
     overflow-x: hidden;
   }
 }
